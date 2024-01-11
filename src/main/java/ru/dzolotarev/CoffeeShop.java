@@ -3,9 +3,9 @@ package ru.dzolotarev;
 public class CoffeeShop {
     public static void main(String[] args) {
 
-        CoffeeInstructions coffeeInstructions = CoffeeFactory.getCOffeeInstructions("эспрессо"); // "латте"
+        CoffeeInstructionDependencyInjector injector = new EspressoInstructionDependencyInjector(); // new LatteInstructionDependencyInjector()
 
-        Barista barista = new Barista(coffeeInstructions);
+        Barista barista = injector.getBarista();
 
         barista.makeCoffee();
     }
