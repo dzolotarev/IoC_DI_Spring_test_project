@@ -7,8 +7,8 @@ public class LatteInstructionDependencyInjector implements CoffeeInstructionDepe
 
     @Override
     public Barista getBarista() {
-        LatteInstructions latteInstructions = new LatteInstructions();
-        Barista barista = new Barista(latteInstructions);
+        LatteInstructions instructions = new LatteInstructions();
+        Barista barista = new Barista(instructions);
         return barista;
     }
 }
