@@ -10,7 +10,7 @@ public class EspressoInstructionDependencyInjector implements CoffeeInstructionD
 
         EspressoInstructions instructions = new EspressoInstructions();
         Barista barista = new Barista();
-        barista.setCoffeeInstructions(instructions);
+        barista.coffeeInstructions = instructions;
         return barista;
     }
 }

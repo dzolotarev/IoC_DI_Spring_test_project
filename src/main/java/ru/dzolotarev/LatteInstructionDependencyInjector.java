@@ -10,7 +10,7 @@ public class LatteInstructionDependencyInjector implements CoffeeInstructionDepe
 
         LatteInstructions instructions = new LatteInstructions();
         Barista barista = new Barista();
-        barista.setCoffeeInstructions(instructions);
+        barista.coffeeInstructions = instructions;
         return barista;
     }
 }
