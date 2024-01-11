@@ -5,7 +5,7 @@ package ru.dzolotarev;
  */
 public class CoffeeFactory {
 
-    public static CoffeeInstructions getCOffeeInstructions(String coffeeName) {
+    public static CoffeeInstructions getCoffeeInstructions(String coffeeName) {
         if (coffeeName == null) {
             return null;
         }
