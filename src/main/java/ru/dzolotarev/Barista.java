@@ -1,15 +1,13 @@
 package ru.dzolotarev;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Barista {
 
-    CoffeeInstructions coffeeInstructions;
-
-    public Barista(CoffeeInstructions coffeeInstructions) {
-        this.coffeeInstructions = coffeeInstructions;
-    }
+    @Autowired
+    private CoffeeInstructions coffeeInstructions;
 
     public void makeCoffee() {
         System.out.println("Получаем инструкции: " + coffeeInstructions.getInstructions());
