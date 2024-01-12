@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ru.dzolotarev</groupId>
-  <artifactId>IoC_and_DI_test_project</artifactId>
+  <artifactId>Spring_for_newbies</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -15,6 +15,13 @@
   </properties>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>6.0.12</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -22,4 +29,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
 </project>

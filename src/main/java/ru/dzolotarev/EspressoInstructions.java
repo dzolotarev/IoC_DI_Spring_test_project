@@ -1,5 +1,8 @@
 package ru.dzolotarev;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class EspressoInstructions implements CoffeeInstructions {
 
     @Override
