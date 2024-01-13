@@ -1,4 +1,4 @@
-package ru.dzolotarev;
+package ru.dzolotarev.iocndi;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;

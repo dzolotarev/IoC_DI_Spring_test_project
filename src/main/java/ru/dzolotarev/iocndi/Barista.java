@@ -1,4 +1,4 @@
-package ru.dzolotarev;
+package ru.dzolotarev.iocndi;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

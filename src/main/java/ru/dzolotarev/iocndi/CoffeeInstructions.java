@@ -1,4 +1,4 @@
-package ru.dzolotarev;
+package ru.dzolotarev.iocndi;
 
 public interface CoffeeInstructions {
 
