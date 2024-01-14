@@ -19,10 +19,14 @@ public class App {
 
         GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
         beanDefinition.setBeanClass(App.MySuperClass.class);
+        beanDefinition.setInitMethodName("myInitMethod");
+        beanDefinition.setDestroyMethodName("myDestroyMethod");
 
         ((GenericApplicationContext) applicationContext).registerBeanDefinition("mySuperClass", beanDefinition);
 
         applicationContext.getBean(MySuperClass.class).myMethod();
+
+        applicationContext.close(); //destroy method call
     }
 
     @Bean
@@ -42,6 +46,14 @@ public class App {
 
         public void myMethod() {
             System.out.println("MySuperClass myMethod");
+        }
+
+        public void myInitMethod() {
+            System.out.println("MySuperClass myInitMethod");
+        }
+
+        public void myDestroyMethod() {
+            System.out.println("MySuperClass myDestroyMethod");
         }
     }
 }
