@@ -1,7 +1,9 @@
 package ru.dzolotarev.beandefinitions;
 
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.GenericApplicationContext;
 
 /**
  * @author Denis Zolotarev
@@ -11,6 +13,9 @@ public class App {
         ConfigurableApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext("ru.dzolotarev.beandefinitions");
 
-        applicationContext.getBean(RestaurantService.class).order("Pizza");
+        BeanDefinition beanDefinition =
+                ((GenericApplicationContext) applicationContext).getBeanDefinition("restaurantService");
+        System.out.println(beanDefinition);
+        System.out.println(beanDefinition.getClass());
     }
 }
