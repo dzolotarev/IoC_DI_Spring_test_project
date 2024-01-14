@@ -1,8 +1,7 @@
 package ru.dzolotarev.springcontainer;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Denis Zolotarev
@@ -10,25 +9,13 @@ import org.springframework.context.annotation.Configuration;
 public class App {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("ru.dzolotarev.springcontainer");
         RestaurantService restaurantService = context.getBean(RestaurantService.class);
         restaurantService.cook("макароны");
     }
 
-    @Configuration
-    static class AppConfig {
 
-        @Bean
-        public FastCook fastCook() {
-            return new FastCook();
-        }
-
-        @Bean
-        public RestaurantService restaurantService() {
-            return new RestaurantService(fastCook());
-        }
-    }
-
+    @Component
     static class RestaurantService {
 
         private FastCook fastCook;
@@ -42,6 +29,7 @@ public class App {
         }
     }
 
+    @Component
     static class FastCook {
 
         public void cook(String dish) {
