@@ -1,6 +1,6 @@
 package ru.dzolotarev.beandefinitions;
 
-import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -17,19 +17,31 @@ public class App {
         ConfigurableApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext("ru.dzolotarev.beandefinitions");
 
-        BeanDefinition beanDefinition =
-                ((GenericApplicationContext) applicationContext).getBeanDefinition("restaurantService");
-        System.out.println(beanDefinition);
-        System.out.println(beanDefinition.getClass());
+        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+        beanDefinition.setBeanClass(App.MySuperClass.class);
+
+        ((GenericApplicationContext) applicationContext).registerBeanDefinition("mySuperClass", beanDefinition);
+
+        applicationContext.getBean(MySuperClass.class).myMethod();
     }
 
     @Bean
-    public  RestaurantService restaurantService() {
+    public RestaurantService restaurantService() {
         return new RestaurantService(fastCook());
     }
 
     @Bean
     public FastCook fastCook() {
         return new FastCook();
+    }
+
+    static class MySuperClass {
+        public MySuperClass() {
+            System.out.println("MySuperClass constructor");
+        }
+
+        public void myMethod() {
+            System.out.println("MySuperClass myMethod");
+        }
     }
 }
