@@ -21,6 +21,7 @@ public class App {
         beanDefinition.setBeanClass(App.MySuperClass.class);
         beanDefinition.setInitMethodName("myInitMethod");
         beanDefinition.setDestroyMethodName("myDestroyMethod");
+        beanDefinition.setPropertyValues(beanDefinition.getPropertyValues().add("myProperty", "myValue"));
 
         ((GenericApplicationContext) applicationContext).registerBeanDefinition("mySuperClass", beanDefinition);
 
@@ -40,8 +41,15 @@ public class App {
     }
 
     static class MySuperClass {
+        private String myProperty;
+
         public MySuperClass() {
             System.out.println("MySuperClass constructor");
+            System.out.println("MySuperClass myProperty = " + myProperty); //null
+        }
+
+        public void setMyProperty(String myProperty) {
+            this.myProperty = myProperty;
         }
 
         public void myMethod() {
@@ -50,6 +58,7 @@ public class App {
 
         public void myInitMethod() {
             System.out.println("MySuperClass myInitMethod");
+            System.out.println("MySuperClass myProperty = " + myProperty);
         }
 
         public void myDestroyMethod() {
