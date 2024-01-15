@@ -1,5 +1,6 @@
 package ru.dzolotarev.beandefinitions;
 
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -22,10 +23,12 @@ public class App {
         beanDefinition.setInitMethodName("myInitMethod");
         beanDefinition.setDestroyMethodName("myDestroyMethod");
         beanDefinition.setPropertyValues(beanDefinition.getPropertyValues().add("myProperty", "myValue"));
+        beanDefinition.setScope(BeanDefinition.SCOPE_PROTOTYPE);
 
         ((GenericApplicationContext) applicationContext).registerBeanDefinition("mySuperClass", beanDefinition);
 
         applicationContext.getBean(MySuperClass.class).myMethod();
+        applicationContext.getBean(MySuperClass.class).myMethod(); // second call - check for scope
 
         applicationContext.close(); //destroy method call
     }
@@ -54,6 +57,7 @@ public class App {
 
         public void myMethod() {
             System.out.println("MySuperClass myMethod");
+            System.out.println("hash = " + this.hashCode());
         }
 
         public void myInitMethod() {
